@@ -2,6 +2,7 @@ from ast import Raise
 from datetime import date
 from operator import itemgetter
 import re
+from persistencia import *
 
 fecha_anio_actual=date.strftime(date.today(), "%Y")
 dia =date.strftime(date.today(), "%Y-%m-%d")
@@ -64,13 +65,18 @@ class Producto:
         
         self.stock = self.stock + int(cantidad)
 class PorNombre:
+    
     def __init__(self,expresion_del_nombre):
         self.expresion_del_nombre=f'{expresion_del_nombre}+[\s]?[a-zA-Z]?+'
+    
     def corresponde_al_producto(self,producto):
         return producto.es_de_nombre(self.expresion_del_nombre.split())
+
 class PorCategoria:
+
     def __init__(self,categoria):
         self.categoria=categoria
+
     def corresponde_al_producto(self,producto):
         return producto.consultar_categoria(self.categoria)
 
@@ -81,10 +87,20 @@ class PorPrecio:
         return producto.retornar_precio() < self.precio
 
 class PorStock:
+    
     def __init__(self, stock):
         self.stock = stock
+    
     def corresponde_al_producto(self,producto):
         return producto.retornar_stock() < self.stock
+
+class PorOposicion:
+
+    def __init__(self,criterio):
+        self.criterio=criterio
+    
+    def corresponde_al_producto(self,producto):
+        return not self.criterio.corresponde_al_producto(producto)
 
 
 class Sucursal:
@@ -317,11 +333,16 @@ class Sucursal:
             return nombre_productos
 
     def actualizar_precio_segun(self,criterio,porcentaje):
+
         for producto in self.productos:
+
             if criterio.corresponde_al_producto(producto):
+
                 producto.actualizar_precio_por_porcentaje(porcentaje)
 
+    def listar_productos_actualizados_por_criterio(self,criterio):
     
+        return [producto for producto in self.productos if criterio.corresponde_al_producto(producto)]
 
    
 class Sucursalvirtual(Sucursal):
@@ -373,3 +394,18 @@ class Promocion:
     def precio(self, precio_base):
         return precio_base - self.valor_fijo
 
+una_sucursal_fisica=Sucursalfisica()
+
+p=Producto("un_producto","cate",1,123)
+
+p_mas=Producto("un_producto_mas","categ",2,1235)
+
+p_mass=Producto("un_producto_mass","categ",3,12345)
+
+una_sucursal_fisica.registrar_producto(p)
+
+una_sucursal_fisica.registrar_producto(p_mas)
+
+una_sucursal_fisica.registrar_producto(p_mass)
+
+guardar(una_sucursal_fisica,p)
