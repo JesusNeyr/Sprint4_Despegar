@@ -80,6 +80,11 @@ class PorPrecio:
     def corresponde_al_producto(self,producto):
         return producto.retornar_precio() < self.precio
 
+class PorStock:
+    def __init__(self, stock):
+        self.stock = stock
+    def corresponde_al_producto(self,producto):
+        return producto.retornar_stock() < self.stock
 
 
 class Sucursal:
