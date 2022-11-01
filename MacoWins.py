@@ -74,6 +74,13 @@ class PorCategoria:
     def corresponde_al_producto(self,producto):
         return producto.consultar_categoria(self.categoria)
 
+class PorPrecio:
+    def __init__(self, precio):
+        self.precio = precio
+    def corresponde_al_producto(self,producto):
+        return producto.retornar_precio() < self.precio
+
+
 
 class Sucursal:
     
@@ -309,14 +316,8 @@ class Sucursal:
             if criterio.corresponde_al_producto(producto):
                 producto.actualizar_precio_por_porcentaje(porcentaje)
 
-    def actualizar_precios_por_nombre(self,nombre, porcentaje):
-
-        self.actualizar_precios_segun(PorNombre(nombre),porcentaje)
     
-    def actualizar_precios_por_categoria(self,categoria, porcentaje):
 
-        self.actualizar_precio_segun(PorCategoria(categoria),porcentaje)
-    
    
 class Sucursalvirtual(Sucursal):
     def __init__(self) :
