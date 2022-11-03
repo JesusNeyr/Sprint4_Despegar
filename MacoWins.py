@@ -345,6 +345,8 @@ class Sucursal:
     
         return [producto for producto in self.productos if criterio.corresponde_al_producto(producto)]
 
+    def reiniciar_lista_de_productos(sucursal):
+        sucursal.productos.clear()
    
 class Sucursalvirtual(Sucursal):
     def __init__(self) :
@@ -369,7 +371,7 @@ class Sucursalvirtual(Sucursal):
     def asignar_valor_gastos_fijo_por_dia(self,valor):
         self.gastos_fijo_por_dia = valor
 
-class Sucursalfisica(Sucursal):
+class SucursalFisica(Sucursal):
     def __init__(self):
         self.productos = []
         self.ventas = [] 
@@ -395,9 +397,9 @@ class Promocion:
     def precio(self, precio_base):
         return precio_base - self.valor_fijo
 
-una_sucursal_fisica=Sucursalfisica()
+# una_sucursal_fisica=Sucursalfisica()
 
-pantalon=Producto("pantalon","gala",1,123)
+# pantalon=Producto("pantalon","gala",1,123)
 
 camisa=Producto("camisa","casual",2,1235)
 
