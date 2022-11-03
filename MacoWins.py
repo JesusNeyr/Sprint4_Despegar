@@ -411,11 +411,23 @@ una_sucursal_fisica.registrar_producto(camisa)
 
 una_sucursal_fisica.registrar_producto(short)
 
+una_sucursal_fisica.recargar_stock(3,80)
+
+una_sucursal_fisica.realizar_compra(3,10,False)
+
 una_sucursal_virtual=Sucursalvirtual()
 
 una_sucursal_virtual.registrar_producto(pantalon)
 
 una_sucursal_virtual.registrar_producto(short)
+
+una_sucursal_virtual.recargar_stock(1,90)
+
+una_sucursal_virtual.recargar_stock(3,90)
+
+una_sucursal_virtual.realizar_compra(1,20,True)
+
+una_sucursal_virtual.realizar_compra(3,10,True)
 
 def alamacenar_datos_de_una_sucursal(nombre,una_sucursal):
 
