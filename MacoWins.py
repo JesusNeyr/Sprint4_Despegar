@@ -344,6 +344,8 @@ class Sucursal:
     
         return [producto for producto in self.productos if criterio.corresponde_al_producto(producto)]
 
+    def reiniciar_lista_de_productos(sucursal):
+        sucursal.productos.clear()
    
 class Sucursalvirtual(Sucursal):
     def __init__(self) :
@@ -368,7 +370,7 @@ class Sucursalvirtual(Sucursal):
     def asignar_valor_gastos_fijo_por_dia(self,valor):
         self.gastos_fijo_por_dia = valor
 
-class Sucursalfisica(Sucursal):
+class SucursalFisica(Sucursal):
     def __init__(self):
         self.productos = []
         self.ventas = [] 
@@ -394,18 +396,18 @@ class Promocion:
     def precio(self, precio_base):
         return precio_base - self.valor_fijo
 
-una_sucursal_fisica=Sucursalfisica()
+# una_sucursal_fisica=Sucursalfisica()
 
-p=Producto("un_producto","cate",1,123)
+# p=Producto("un_producto","cate",1,123)
 
-p_mas=Producto("un_producto_mas","categ",2,1235)
+# p_mas=Producto("un_producto_mas","categ",2,1235)
 
-p_mass=Producto("un_producto_mass","categ",3,12345)
+# p_mass=Producto("un_producto_mass","categ",3,12345)
 
-una_sucursal_fisica.registrar_producto(p)
+# una_sucursal_fisica.registrar_producto(p)
 
-una_sucursal_fisica.registrar_producto(p_mas)
+# una_sucursal_fisica.registrar_producto(p_mas)
 
-una_sucursal_fisica.registrar_producto(p_mass)
+# una_sucursal_fisica.registrar_producto(p_mass)
 
-guardar(una_sucursal_fisica,p)
+# guardar(una_sucursal_fisica,p)
