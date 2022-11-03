@@ -46,7 +46,7 @@ class Producto:
             return self.precio() + (self.precio() * 0.21)
 
     def actualizar_precio_por_porcentaje(self,porcentaje):
-        self.precio_base +=self.precio_base*porcentaje/100
+        self.precio_base +=self.retornar_precio()*porcentaje/100
     
     def es_de_nombre(self,expresion_del_nombre):
 
@@ -65,13 +65,15 @@ class Producto:
     def recargar_stock(self,cantidad):
         
         self.stock = self.stock + int(cantidad)
+
 class PorNombre:
     
     def __init__(self,expresion_del_nombre):
+
         self.expresion_del_nombre=f'{expresion_del_nombre}+[\s]?[a-zA-Z]?+'
     
     def corresponde_al_producto(self,producto):
-        return producto.es_de_nombre(self.expresion_del_nombre.split())
+        return producto.es_de_nombre(self.expresion_del_nombre)
 
 class PorCategoria:
 
@@ -189,9 +191,6 @@ class Sucursal:
 
             return self.productos[posicion].codigo == codigo_de_producto and self.productos[posicion].stock > 0
     
-    def mostrar(self):
-        for i in self.productos:
-            print(f'nombre del producto {i.nombre}, stock = {i.stock},codigo = {i.codigo},precio={i.precio_base}')
     
     def calcular_precio_final(self,codigo,es_extranjero):
 
@@ -413,7 +412,6 @@ una_sucursal_fisica.registrar_producto(short)
 
 una_sucursal_fisica.recargar_stock(3,80)
 
-una_sucursal_fisica.realizar_compra(3,10,False)
 
 una_sucursal_virtual=Sucursalvirtual()
 
@@ -421,13 +419,9 @@ una_sucursal_virtual.registrar_producto(pantalon)
 
 una_sucursal_virtual.registrar_producto(short)
 
-una_sucursal_virtual.recargar_stock(1,90)
 
-una_sucursal_virtual.recargar_stock(3,90)
 
-una_sucursal_virtual.realizar_compra(1,20,True)
 
-una_sucursal_virtual.realizar_compra(3,10,True)
 
 def alamacenar_datos_de_una_sucursal(nombre,una_sucursal):
 
