@@ -397,9 +397,9 @@ class Promocion:
     def precio(self, precio_base):
         return precio_base - self.valor_fijo
 
-# una_sucursal_fisica=Sucursalfisica()
+una_sucursal_fisica=SucursalFisica()
 
-# pantalon=Producto("pantalon","gala",1,123)
+pantalon=Producto("pantalon","gala",1,123)
 
 camisa=Producto("camisa","casual",2,1235)
 
