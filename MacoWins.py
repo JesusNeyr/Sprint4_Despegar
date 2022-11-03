@@ -2,6 +2,7 @@ from ast import Raise
 from datetime import date
 from operator import itemgetter
 import re
+from textwrap import shorten
 from persistencia import *
 
 fecha_anio_actual=date.strftime(date.today(), "%Y")
@@ -396,16 +397,24 @@ class Promocion:
 
 una_sucursal_fisica=Sucursalfisica()
 
-p=Producto("un_producto","cate",1,123)
+pantalon=Producto("pantalon","gala",1,123)
 
-p_mas=Producto("un_producto_mas","categ",2,1235)
+camisa=Producto("camisa","casual",2,1235)
 
-p_mass=Producto("un_producto_mass","categ",3,12345)
+short=Producto("short","sport",3,12345)
 
-una_sucursal_fisica.registrar_producto(p)
+una_sucursal_fisica.registrar_producto(pantalon)
 
-una_sucursal_fisica.registrar_producto(p_mas)
+una_sucursal_fisica.registrar_producto(camisa)
 
-una_sucursal_fisica.registrar_producto(p_mass)
+una_sucursal_fisica.registrar_producto(short)
 
-guardar(una_sucursal_fisica,p)
+una_sucursal_virtual=Sucursalvirtual()
+
+una_sucursal_virtual.registrar_producto(pantalon)
+
+una_sucursal_virtual.registrar_producto(short)
+
+def alamacenar_datos_de_una_sucursal(nombre,una_sucursal):
+
+    guardar(nombre,una_sucursal)
