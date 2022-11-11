@@ -120,9 +120,6 @@ def test_gastos_por_dia_con_gasto_fijo_en_100_y_ventas_menores_a_100():
     una_sucursal_virtual.asignar_valor_gastos_fijo_por_dia(100)
     assert una_sucursal_virtual.gastos_por_dia()==100
 
-        # def ganancias_total_por_dia(self):
-        # return self.valor_ventas_del_dia() - self.gastos_por_dia()
-
 def test_ganancia_total_por_dia_con_ventas_mayores_a_100():
 
     una_sucursal_virtual=Sucursalvirtual()
