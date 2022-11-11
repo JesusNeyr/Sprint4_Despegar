@@ -1,6 +1,6 @@
 from MacoWins import *
 
-from persistencia import *
+from persistencia.persistencia import *
 
 alamacenar_datos_de_una_sucursal("sucursal_virtual",una_sucursal_virtual)
 

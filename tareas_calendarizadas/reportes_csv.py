@@ -1,8 +1,9 @@
 from asyncore import write
 import csv
 from MacoWins import *
-from persistencia import *
-
+from persistencia.persistencia import *
+fecha_anio_actual=date.strftime(date.today(), "%Y")
+dia =date.strftime(date.today(), "%Y-%m-%d")
 sucursales_guardadas=cargar_todos()
 
 lista_de_sucursales=[]
